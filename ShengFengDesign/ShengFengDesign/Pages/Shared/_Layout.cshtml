@@ -1,0 +1,172 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer _localizer
+
+<!DOCTYPE html>
+<html lang="@_localizer["Culture"]">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="盛豐室內裝修: 木做工程、設計規劃、水電配置、冷氣安裝、油漆工程、窗簾規劃、傢俱訂製、打石工程、室內外磁磚" />
+    <title>盛豐室內裝修 - @ViewData["Title"]</title>
+    @{
+        string back;
+        string pageName = ViewData["PageName"]?.ToString();
+        if (!string.IsNullOrEmpty(pageName))
+        {
+            back = pageName;
+        }
+        else
+        {
+            back = "";
+        }
+    }
+
+    @if (!string.IsNullOrEmpty(back))
+    {
+        <link rel="canonical" href="https://sheng-feng-design.com/@_localizer["Culture"]/@back">
+    }
+    else{
+        <link rel="canonical" href="https://sheng-feng-design.com/@_localizer["Culture"]">
+    }
+    <link rel="icon" type="image/x-icon" href="~/asserts/photo/logo.png" />
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600"
+          rel="stylesheet" />
+
+    <!-- Bootstrap -->
+    <link type="text/css"
+          rel="stylesheet"
+          href="~/asserts/css/bootstrap.min.css" />
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="~/asserts/css/font-awesome.min.css" />
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="~/asserts/css/style.css?v=@Guid.NewGuid().ToString()" />
+
+    <!-- Main JS -->
+    <script type="text/javascript" src="/asserts/js/main.js?v=@Guid.NewGuid().ToString()"></script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-NPF2BCV');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPF2BCV" height="0" width="0"
+                style="display: none; visibility: hidden">
+        </iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <header id="header">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Logo -->
+                <div class="navbar-brand">
+                    <a class="logo" asp-controller="Home" asp-action="Index">
+                        <img src="~/asserts/photo/logo.png" />
+                    </a>
+                    @_localizer["LogoName"]
+                </div>
+                <!-- /Logo -->
+                <!-- Mobile toggle -->
+                <button class="navbar-toggle" onclick="openMobileNav()">
+                    <span></span>
+                </button>
+                <!-- /Mobile toggle -->
+            </div>
+            <!-- Navigation -->
+            <nav id="nav">
+                <ul class="main-menu nav navbar-nav navbar-right">
+                    <li><a asp-controller="Home" asp-action="Index">@_localizer["Home"]</a></li>
+                    <li><a asp-controller="album" asp-action="Index" asp-route-id="">@_localizer["Album"]</a></li>
+                    <li id="navbar-contact-us"><a asp-controller="contact-us" asp-action="Index"> <p>@_localizer["ContactUs"]</p></a></li>
+                    <li id="navbar-language">
+                        <a>
+                            <p> @_localizer["Language"] </p>
+                            <div class="navbar-language-list">
+                                <ul>
+                                    <li onclick="changeLangange('en');">
+                                        English
+                                    </li>
+                                    <li onclick="changeLangange('zh')">
+                                        中文
+                                    </li>
+                                </ul>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /Navigation -->
+        </div>
+    </header>
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="section" style="background-color:rgba(211, 211, 211, 0.1)">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- footer logo -->
+                <div class="col-md-6">
+                    <div class="footer-logo">
+                        <a class="logo" asp-controller="Home" asp-action="Index">
+                            <img src="~/asserts/photo/logo.png" alt="logo">
+                        </a>
+                        @_localizer["LogoName"]
+                    </div>
+                </div>
+                <!-- footer logo -->
+                <!-- footer nav -->
+                <div class="col-md-6">
+                    <ul class="footer-nav">
+                        <li><a asp-controller="Home" asp-action="Index">@_localizer["Home"]</a></li>
+                        <li><a asp-controller="album" asp-action="Index" asp-route-id="">@_localizer["Album"]</a></li>
+                    </ul>
+                </div>
+                <!-- /footer nav -->
+            </div>
+            <!-- /row -->
+            <!-- row -->
+            <div id="bottom-footer" class="row">
+
+                <!-- social -->
+                <div class="col-md-4 col-md-push-8">
+                </div>
+                <!-- /social -->
+                <!-- copyright -->
+                <div class="col-md-8 col-md-pull-4">
+                    <div class="footer-copyright">
+                        <span>&copy; Copyright 2023. All Rights Reserved. | shengfengdesign </span>
+                    </div>
+                </div>
+                <!-- /copyright -->
+            </div>
+            <!-- row -->
+        </div>
+        <!-- /container -->
+    </footer>
+    <!-- /Footer -->
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script> *@
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/asserts/js/bootstrap.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

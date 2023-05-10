@@ -1,0 +1,3 @@
+Type: TXT
+Host/Name: shengfengdesign.com
+Value: v=spf1

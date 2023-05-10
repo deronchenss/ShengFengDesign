@@ -1,0 +1,46 @@
+﻿@model ShengFengDesign.ViewModels.Album.AlbumItemViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+    ViewData["PageName"] = $"album/{Model.ID}";
+    ViewData["h1"] = Model.Title;
+    ViewData["writeTime"] = Model.ModifyTimeText;
+    ViewData["author"] = Model.Author;
+}
+
+
+<!-- main blog -->
+<div id="main" class="col-md-9">
+    <!-- blog post -->
+    <div class="blog-post">
+        <h3>@Model.Title</h3>
+        @Html.Raw(Model.Content)
+        <a class="main-button icon-button"
+           asp-controller="contact-us" asp-action="Index"
+           style="float: right">Contact Now!</a>
+    </div>
+    <!-- /blog post -->
+</div>
+<!-- /main blog -->
+<!-- aside blog -->
+<div id="aside" class="col-md-3">
+    <!-- Author info -->
+    <h3>Author</h3>
+    <div class="AuthorArea">
+        <div class="AuthorName"> @Model.Author</div>
+        <div class="AuthorJob">@Model.AuthorJobTitle</div>
+        <hr class="dividing-line" />
+        <div class="AuthorDescription">@Model.AuthorDescription</div>
+    </div>
+    <!-- /Author info -->
+    <!-- category widget -->
+    <div class="widget category-widget">
+        <h3>Other Articles</h3>
+        @foreach(var item in Model.AlbumList)
+        {
+            <a class="category" asp-controller="Album" asp-action="Index" asp-route-id="@item.ID">@item.Title</a>
+        }
+    </div>
+    <!-- /category widget -->
+</div>
+<!-- /aside blog -->

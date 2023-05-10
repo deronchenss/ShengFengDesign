@@ -1,0 +1,52 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer _localizer
+@model ShengFengDesign.ViewModels.Home.HomeViewModel
+@{
+    ViewData["Title"] = "中部、台中、雲林、西屯區、北屯區推薦室內裝修";
+}
+
+<!-- INTRO -->
+<div id="home" class="hero-area">
+    <!-- Backgound Image -->
+    <div class="bg-image bg-parallax overlay"
+         style="
+          background-image: url(asserts/photo/240886.jpg);
+        "></div>
+    <!-- /Backgound Image -->
+    <div class="home-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="white-text">@_localizer["Title"]</h1>
+                    <p class="lead white-text">
+                        @_localizer["AboutDescription1"]<br />
+                        @_localizer["AboutDescription2"]<br />
+                        @_localizer["AboutDescription3"]<br />
+                        @_localizer["AboutDescription4"]
+                    </p>
+                    <a class="main-button icon-button" asp-controller="contact-us" asp-action="Index"> Contact us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="why-us" class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="section-header text-center">
+                <h2>@_localizer["WhatWeProvide"]</h2>
+                <p class="lead">
+                      @_localizer["Woodworking"] @_localizer["DesignPlanning"]<br />
+                      @_localizer["PlumbingElectricalConfiguration"] @_localizer["AirConditioningInstallation"]<br />
+                      @_localizer["PaintingWorks"] @_localizer["CurtainPlanning"]<br />
+                      @_localizer["CustomFurniture"] @_localizer["StoneMasonry"]<br />
+                      @_localizer["IndoorOutdoorTiles"]
+                </p>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>

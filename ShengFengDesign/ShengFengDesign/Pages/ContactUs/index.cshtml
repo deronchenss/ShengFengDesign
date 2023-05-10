@@ -1,0 +1,105 @@
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer _localizer
+@{
+    ViewData["Title"] = "中部、台中、雲林、西屯區、北屯區推薦室內裝修";
+    ViewData["PageName"] = "contact-us";
+}
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script type="text/javascript" src="/asserts/js/main.js"></script>
+
+<!-- Hero-area -->
+<div class="hero-area section">
+    <!-- Backgound Image -->
+    <div class="bg-image bg-parallax overlay"
+         style="background-image: url(/asserts/images/home-background.jpg)"></div>
+    <!-- /Backgound Image -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 text-center">
+                <ul class="hero-area-tree">
+                    <li><a asp-controller="Home" asp-action="Index">@_localizer["Home"]</a></li>
+                    <li>@_localizer["ContactUs"]</li>
+                </ul>
+                <h1 class="white-text">@_localizer["ContactUs"]</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Hero-area -->
+<!-- Contact -->
+<div id="contact" class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- contact information -->
+            <div class="col-md-6 col-md-offset-1">
+                <h4>Contact Information</h4>
+                <div class="social-links">
+                    <a href="mailto:harrychen1471@gmail.com?subject=To 盛豐室內裝修"
+                       rel="nofollow"
+                       target="_blank">
+                        <img src="/asserts/images/c-icon-mail.png" alt="盛豐室內裝修 Contact mail" />
+                    </a>
+                     <a href="tel:0985488311" target="_blank">
+                        <img src="/asserts/images/c-icon-whatsapp.png" alt="盛豐室內裝修 Contact phone" />
+                    </a>
+                </div>
+            </div>
+            <!-- contact information -->
+            <!-- contact form -->
+            <div class="col-md-5">
+                <div class="contact-form">
+                    <h4>@_localizer["SendAMessenge"]</h4>
+                    <form id="UserCollect" method="post">
+                        <input class="input"
+                               type="text"
+                               name="userName"
+                               placeholder=@_localizer["Name"]
+                               id="UserName" required/>
+                        <input class="input"
+                               type="email"
+                               name="email"
+                               placeholder=@_localizer["Mail"]
+                               id="eMail" required/>
+                        <label for="UserRoleList">@_localizer["WhatProvideNeed"]</label>
+                        <select id="UserRoleList form-select" class="input" name="userRole" required>
+                            <option value="" selected disabled>@_localizer["PleaseChoose"]</option>
+                            <option value=@_localizer["Woodworking"]>@_localizer["Woodworking"] </option>
+                            <option value=@_localizer["DesignPlanning"]>@_localizer["DesignPlanning"] </option>
+                            <option value=@_localizer["PlumbingElectricalConfiguration"]> @_localizer["PlumbingElectricalConfiguration"]</option>
+                            <option value=@_localizer["AirConditioningInstallation"]> @_localizer["AirConditioningInstallation"]</option>
+                            <option value=@_localizer["CurtainPlanning"]>@_localizer["CurtainPlanning"]</option>
+                            <option value=@_localizer["PaintingWorks"]>@_localizer["PaintingWorks"]</option>
+                            <option value=@_localizer["CustomFurniture"]>@_localizer["CustomFurniture"]</option>
+                            <option value=@_localizer["StoneMasonry"]>@_localizer["StoneMasonry"]</option>
+                            <option value=@_localizer["IndoorOutdoorTiles"]>@_localizer["IndoorOutdoorTiles"]</option>
+                        </select>
+                        <label for="MessengerTypeList">@_localizer["MessengerType"]</label>
+                        <select id="MessengerTypeList" class="input" name="messengerType" required>
+                            <option value="Phone">@_localizer["Phone"]</option>
+                        </select>
+                        <input class="input"
+                               type="text"
+                               name="messengerId"
+                               placeholder=@_localizer["PhoneNumber"]
+                               id="MessengerId" required/>
+                        <textarea class="input"
+                                  name="message"
+                                  placeholder=@_localizer["EnterYourMessenge"]
+                                  id="Message" ></textarea>
+                        <button class="main-button icon-button pull-right" onclick="userCollect();">
+                            @_localizer["Send"]
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <!-- /contact form -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /Contact -->
+
