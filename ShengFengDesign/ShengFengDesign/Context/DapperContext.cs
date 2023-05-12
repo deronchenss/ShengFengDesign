@@ -12,7 +12,12 @@ public class DapperContext
     public DapperContext(IConfiguration configuration)
     {
         _configuration = configuration;
-        _connectionString = _configuration.GetConnectionString("ConnectionString");
+        string dbUser = Environment.GetEnvironmentVariable("DB_USER");
+        string dbPass = Environment.GetEnvironmentVariable("DB_PASS");
+        string dbName = Environment.GetEnvironmentVariable("DB_NAME");
+        string dbServer = Environment.GetEnvironmentVariable("DB_SERVER");
+        _connectionString = $"Server={dbServer};Database={dbName};User Id={dbUser};Password={dbPass}";
+        //_connectionString = _configuration.GetConnectionString("ConnectionString");
     }
 
     private IDbConnection CreateConnection() => new SqlConnection(_connectionString);
