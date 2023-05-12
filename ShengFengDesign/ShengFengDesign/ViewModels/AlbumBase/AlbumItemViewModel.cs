@@ -14,6 +14,6 @@
         public string AuthorDescription { get; set; }
         public string ModifyTimeText { get; set; }
 
-        public List<AlbumItemViewModel> AlbumList { get; set; }
+        public List<string> AlbumList { get; set; }
     }
 }

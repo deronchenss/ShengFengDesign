@@ -40,6 +40,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="wwwroot\googlebc8ca0f4a473e038.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Resources\SharedResources.zh.resx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

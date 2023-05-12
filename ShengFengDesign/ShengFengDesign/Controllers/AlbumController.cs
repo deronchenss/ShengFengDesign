@@ -38,26 +38,17 @@ namespace ShengFengDesign.Controllers
             }
             else
             {
-                var list = await _AlbumService.GetAlbumList(culture);
+                var path = "wwwroot/asserts/photo/";
                 var data = await _AlbumService.GetAlbum(id, culture);
+                var images = Directory.GetFiles(path + data.ID).ToList();
+                images = images.ConvertAll(image => image = image.Replace("wwwroot", ""));
                 var viewModel = new AlbumItemViewModel
                 {
                     ID = data.ID,
                     Title = data.Title,
-                    Content = Markdown.ToHtml(data.Content),
-                    Author = data.Author,
-                    AuthorJobTitle=data.AuthorJobTitle,
-                    AuthorDescription = data.AuthorDescription,
+                    Content = data.Content,
                     ModifyTimeText = $"{data.ModifyTime.ToString("dd MMM, yyyy", CultureInfo.InvariantCulture)}",
-                    AlbumList = list.Where(x => x.ID != data.ID).Select(
-                        x => new AlbumItemViewModel
-                        {
-                            ID = x.ID,
-                            Title = x.Title,
-                            Content = Markdown.ToHtml(x.Content),
-                            AuthorJobTitle = x.AuthorJobTitle,
-                            AuthorDescription = x.AuthorDescription, 
-                        }).ToList()
+                    AlbumList = images
                 };
 
                 return View("Article", viewModel);

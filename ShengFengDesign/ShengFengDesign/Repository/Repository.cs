@@ -46,15 +46,11 @@ namespace ShengFengDesign.Repository
 
         public async Task<AlbumModel> GetAlbum(string id, string culture = "")
         {
-            _context.sql = @"SELECT [ID],[Title]
+            _context.sql = @"SELECT [ID]
+                                ,[Title]
                                 ,[Content]
-                                ,Author  as [Author]
-                                ,AU.[JobTitle]  as [AuthorJobTitle]
-                                ,AU.[Description] as [AuthorDescription]
                                 ,[ModifyTime]
-                                ,AU.[Author_ID]
                             FROM [ShengFengDB].[dbo].[Album] as KB
-                            LEFT JOIN [AuthorList] AU ON KB.[Author_ID] = AU.[Author_ID]
                             WHERE [ID] = @ID
                             AND LANGUAGE LIKE '%' + @LANGUAGE + '%'
                             ORDER BY KB.ModifyTime DESC";
